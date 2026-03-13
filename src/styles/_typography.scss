@@ -1,0 +1,166 @@
+.t-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--font-5xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.04em;
+  line-height: var(--leading-none);
+  color: var(--text-primary);
+}
+
+.t-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--font-4xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.035em;
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+}
+
+// Used for big stat numbers on the dashboard
+.t-display-number {
+  font-family: var(--font-display);
+  font-size: var(--font-3xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.04em;
+  line-height: var(--leading-none);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+// The H1 on each page
+.t-page-title {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+}
+
+// H2
+.t-section-title {
+  font-family: var(--font-display);
+  font-size: var(--font-lg);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+// H3
+.t-card-title {
+  font-family: var(--font-display);
+  font-size: var(--font-base);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+// H4
+.t-group-title {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+// Slightly bolder body
+.t-body-strong {
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+}
+
+.t-label {
+  font-family: var(--font-body);
+  font-size: var(--font-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  line-height: var(--leading-none);
+}
+
+// Slightly larger label
+.t-label-md {
+  font-family: var(--font-body);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+// Standard metadata(timestamps, IDs, counts)
+.t-meta {
+  font-family: var(--font-body);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-tertiary);
+  line-height: var(--leading-normal);
+}
+
+// Monospace data for IDs, codes, amounts that need alignment
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-regular);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+// Compact action link inside a list or table cell
+.t-action {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-medium);
+  color: var(--action-primary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+
+  &:hover {
+    color: var(--action-primary-hover);
+  }
+}
+
+// modifiers
+.t-muted    { color: var(--text-tertiary) !important; }
+.t-secondary { color: var(--text-secondary) !important; }
+.t-primary  { color: var(--text-primary) !important; }
+.t-brand    { color: var(--action-primary) !important; }
+.t-accent   { color: var(--accent) !important; }
+.t-success  { color: var(--status-success-text) !important; }
+.t-warning  { color: var(--status-warning-text) !important; }
+.t-danger   { color: var(--status-danger-text) !important; }
+
+.t-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.t-no-wrap {
+  white-space: nowrap;
+}
+
+.t-center { text-align: center; }
+.t-right  { text-align: right; }
