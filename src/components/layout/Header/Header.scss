@@ -1,0 +1,92 @@
+@use "../../../styles/" as *;
+
+.header {
+  height: $header-height;
+  min-height: $header-height;
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  @include flex-between;
+  padding: 0 $space-6;
+  gap: $space-4;
+
+  &__left {
+    @include flex(row, flex-start, center);
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__right {
+    @include flex(row, flex-start, center);
+    gap: $space-3;
+  }
+
+  // Search bar 
+  &__search {
+    @include flex(row, flex-start, center);
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    background-color: $color-surface-raised;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+    @include transition(border-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-border-light;
+      color: $color-text-secondary;
+    }
+  }
+
+  &__search-text {
+    min-width: 120px;
+    text-align: left;
+  }
+
+  &__search-kbd {
+    font-size: $font-size-xs;
+    padding: 2px $space-2;
+    background: $color-border;
+    border-radius: $radius-sm;
+    color: $color-text-muted;
+  }
+
+  &__icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    @include flex-center;
+    color: $color-text-muted;
+    font-size: $font-size-base;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-surface-raised;
+      color: $color-text-primary;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 24px;
+    background-color: $color-border;
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: rgba($color-brand, 0.2);
+    color: $color-brand;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    @include flex-center;
+    cursor: pointer;
+  }
+}
