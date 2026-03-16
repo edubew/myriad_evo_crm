@@ -1,0 +1,151 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  height: 100vh;
+  background-color: $color-surface;
+  border-right: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__logo {
+    @include flex(row, flex-start, center);
+    gap: $space-3;
+    padding: $space-5 $space-5;
+    border-bottom: 1px solid $color-border;
+    height: $header-height;
+  }
+
+  &__logo-mark {
+    width: 32px;
+    height: 32px;
+    background: $color-brand;
+    color: white;
+    border-radius: $radius-md;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-md;
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  &__logo-text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    letter-spacing: 0.3px;
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $space-4 $space-3;
+    overflow-y: auto;
+    @include scrollbar;
+  }
+
+  &__group {
+    margin-bottom: $space-1;
+  }
+
+  &__link {
+    @include flex(row, flex-start, center);
+    gap: $space-3;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-surface-raised;
+      color: $color-text-primary;
+    }
+
+    &--active {
+      background-color: rgba($color-brand, 0.12);
+      color: $color-brand;
+
+      .sidebar__icon {
+        color: $color-brand;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: $font-size-md;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    color: $color-text-muted;
+  }
+
+  &__label {
+    flex: 1;
+  }
+
+  &__children {
+    margin-top: $space-1;
+    margin-left: calc(20px + $space-3 + $space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__child-link {
+    display: block;
+    padding: $space-1 $space-3;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    @include transition(color);
+
+    &:hover {
+      color: $color-text-primary;
+    }
+
+    &--active {
+      color: $color-brand;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__footer {
+    @include flex(row, flex-start, center);
+    gap: $space-3;
+    padding: $space-4 $space-4;
+    border-top: 1px solid $color-border;
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: rgba($color-brand, 0.2);
+    color: $color-brand;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__user-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    @include truncate;
+  }
+
+  &__user-role {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+  }
+}
