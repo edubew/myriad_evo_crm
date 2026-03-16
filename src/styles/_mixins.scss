@@ -1,3 +1,5 @@
+@use 'tokens' as *;
+
 // Flexbox shortcuts
 @mixin flex($direction: row, $justify: flex-start, $align: center) {
   display: flex;
@@ -20,26 +22,36 @@
 
 // Responsive breakpoints
 @mixin mobile {
-  @media (max-width: 640px) { @content; }
+  @media (max-width: 640px) {
+    @content;
+  }
 }
 
 @mixin tablet {
-  @media (max-width: 1024px) { @content; }
+  @media (max-width: 1024px) {
+    @content;
+  }
 }
 
 @mixin desktop {
-  @media (min-width: 1280px) { @content; }
+  @media (min-width: 1280px) {
+    @content;
+  }
 }
 
 // Surface card style
 @mixin surface($raised: false) {
-  background-color: if($raised, $color-surface-raised, $color-surface);
+  @if $raised {
+    background-color: $color-surface-raised;
+  } @else {
+    background-color: $color-surface;
+  }
   border: 1px solid $color-border;
   border-radius: $radius-lg;
 }
 
 // Smooth transition
-@mixin transition($props: all, $speed: $transition-normal) {
+@mixin transition($props: all, $speed: 0.25s ease) {
   transition: $props $speed;
 }
 

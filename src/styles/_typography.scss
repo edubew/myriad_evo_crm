@@ -1,3 +1,5 @@
+@use 'tokens' as *;
+
 .text-xs {
   font-size: $font-size-xs;
 }
