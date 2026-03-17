@@ -1,0 +1,84 @@
+@use '../../styles' as *;
+
+.auth-page {
+  min-height: 100vh;
+  background-color: $color-bg;
+  @include flex-center;
+  padding: $space-6;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  @include surface;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+    text-align: center;
+  }
+
+  &__logo {
+    width: 48px;
+    height: 48px;
+    background: $color-brand;
+    color: white;
+    border-radius: $radius-lg;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    @include flex-center;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+  }
+
+  &__error {
+    padding: $space-3 $space-4;
+    background: rgba($color-danger, 0.1);
+    border: 1px solid rgba($color-danger, 0.3);
+    border-radius: $radius-md;
+    color: $color-danger;
+    font-size: $font-size-sm;
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  &__link {
+    color: $color-brand;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      color: $color-brand-light;
+    }
+  }
+}
