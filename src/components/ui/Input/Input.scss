@@ -1,0 +1,42 @@
+@use '../../../styles' as *;
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background-color: $color-surface-raised;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    color: $color-text-primary;
+    font-size: $font-size-sm;
+    @include transition(border-color);
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-brand;
+    }
+  }
+
+  &__error {
+    font-size: $font-size-xs;
+    color: $color-danger;
+  }
+
+  &--error &__input {
+    border-color: $color-danger;
+  }
+}
