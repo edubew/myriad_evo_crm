@@ -31,6 +31,9 @@ function Register() {
       await register(form);
       navigate("/login");
     } catch (err) {
+      console.log("Full error:", err);
+      console.log("Response data:", err.response?.data);
+      console.log("Response status:", err.response?.status);
       setErrors(err.response?.data?.errors || ["Something went wrong"]);
     } finally {
       setLoading(false);
