@@ -11,12 +11,18 @@ export function AuthProvider({ children }) {
 
   // on app loading, check if the user is already logged in
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    const storedToken = localStorage.getItem("token");
-    if (storedUser && storedToken) {
-      setUser(JSON.parse(storedUser));
+    try {
+      const storedUser = localStorage.getItem("user");
+      const storedToken = localStorage.getItem("token");
+      if (storedUser && storedToken) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   const login = async (credentials) => {

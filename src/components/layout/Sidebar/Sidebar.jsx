@@ -1,5 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+
+const DEV_USER = { first_name: "Inayat", last_name: "Khan", role: "admin" };
 
 const navigation = [
   {
@@ -53,6 +56,12 @@ const navigation = [
 ];
 
 function Sidebar() {
+  const { user } = useAuth()
+  const activeUser = user || DEV_USER
+  
+  const initials = `${activeUser.first_name?.[0] || ''}${activeUser.last_name?.[0] || ''}`
+  const fullName = `${activeUser.first_name} ${activeUser.last_name}`
+
   return (
     <aside className="sidebar">
       <div className="sidebar__logo">
@@ -95,10 +104,10 @@ function Sidebar() {
       </nav>
 
       <div className="sidebar__footer">
-        <div className="sidebar__avatar">IK</div>
+        <div className="sidebar__avatar">{initials}</div>
         <div className="sidebar__user-info">
-          <span className="sidebar__user-name">Inayat Khan</span>
-          <span className="sidebar__user-role">Admin</span>
+          <span className="sidebar__user-name">{fullName}</span>
+          <span className="sidebar__user-role">{activeUser.role}</span>
         </div>
       </div>
     </aside>
