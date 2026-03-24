@@ -37,10 +37,6 @@
       background-color: var(--surface-raised);
     }
 
-    // @media (max-width: #{$bp-tablet}) {
-    //   display: flex;
-    // }
-
     @media (max-width: #{$bp-mobile}) {
       display: flex;
     }
