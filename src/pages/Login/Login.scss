@@ -1,20 +1,28 @@
-@use '../../styles' as *;
+@use '../../styles/tokens' as *;
 
 .auth-page {
   min-height: 100vh;
-  background-color: $color-bg;
-  @include flex-center;
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: $space-6;
 }
 
 .auth-card {
   width: 100%;
   max-width: 420px;
-  @include surface;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
   padding: $space-8;
   display: flex;
   flex-direction: column;
   gap: $space-6;
+
+  @media (max-width: #{$bp-mobile}) {
+    padding: $space-6;
+  }
 
   &__header {
     display: flex;
@@ -27,23 +35,25 @@
   &__logo {
     width: 48px;
     height: 48px;
-    background: $color-brand;
-    color: white;
+    background: var(--brand);
+    color: var(--brand-text);
     border-radius: $radius-lg;
     font-size: $font-size-xl;
     font-weight: $font-weight-bold;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__title {
     font-size: $font-size-xl;
     font-weight: $font-weight-semibold;
-    color: $color-text-primary;
+    color: var(--text-primary);
   }
 
   &__subtitle {
     font-size: $font-size-sm;
-    color: $color-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__form {
@@ -56,29 +66,34 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: $space-3;
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__error {
     padding: $space-3 $space-4;
-    background: rgba($color-danger, 0.1);
-    border: 1px solid rgba($color-danger, 0.3);
+    background: rgba(196, 64, 64, 0.1);
+    border: 1px solid rgba(196, 64, 64, 0.3);
     border-radius: $radius-md;
-    color: $color-danger;
+    color: var(--danger);
     font-size: $font-size-sm;
   }
 
   &__footer {
     text-align: center;
     font-size: $font-size-sm;
-    color: $color-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__link {
-    color: $color-brand;
+    color: var(--brand);
     font-weight: $font-weight-medium;
+    transition: color $transition-fast;
 
     &:hover {
-      color: $color-brand-light;
+      color: var(--brand-hover);
     }
   }
 }

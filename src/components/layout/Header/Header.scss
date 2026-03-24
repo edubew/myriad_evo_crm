@@ -1,92 +1,164 @@
-@use "../../../styles/" as *;
+@use "../../../styles/tokens" as *;
 
 .header {
   height: $header-height;
   min-height: $header-height;
-  background-color: $color-surface;
-  border-bottom: 1px solid $color-border;
-  @include flex-between;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 $space-6;
   gap: $space-4;
+  flex-shrink: 0;
+
+  @media (max-width: #{$bp-mobile}) {
+    padding: 0 $space-4;
+  }
 
   &__left {
-    @include flex(row, flex-start, center);
+    display: flex;
+    align-items: center;
     gap: $space-4;
+  }
+
+  &__menu-btn {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: $font-size-lg;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: var(--surface-raised);
+    }
+
+    // @media (max-width: #{$bp-tablet}) {
+    //   display: flex;
+    // }
+
+    @media (max-width: #{$bp-mobile}) {
+      display: flex;
+    }
   }
 
   &__title {
     font-size: $font-size-md;
     font-weight: $font-weight-semibold;
-    color: $color-text-primary;
+    color: var(--text-primary);
   }
 
   &__right {
-    @include flex(row, flex-start, center);
+    display: flex;
+    align-items: center;
     gap: $space-3;
   }
 
-  // Search bar 
   &__search {
-    @include flex(row, flex-start, center);
+    display: flex;
+    align-items: center;
     gap: $space-2;
     padding: $space-2 $space-3;
-    background-color: $color-surface-raised;
-    border: 1px solid $color-border;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
     border-radius: $radius-md;
-    color: $color-text-muted;
+    color: var(--text-muted);
     font-size: $font-size-sm;
-    @include transition(border-color);
+    transition: border-color $transition-fast;
     cursor: pointer;
 
     &:hover {
-      border-color: $color-border-light;
-      color: $color-text-secondary;
+      border-color: var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: #{$bp-mobile}) {
+      padding: $space-2;
     }
   }
 
   &__search-text {
     min-width: 120px;
     text-align: left;
+
+    @media (max-width: #{$bp-mobile}) {
+      display: none;
+    }
   }
 
   &__search-kbd {
     font-size: $font-size-xs;
     padding: 2px $space-2;
-    background: $color-border;
+    background: var(--border);
     border-radius: $radius-sm;
-    color: $color-text-muted;
+    color: var(--text-muted);
+
+    @media (max-width: #{$bp-mobile}) {
+      display: none;
+    }
   }
 
   &__icon-btn {
     width: 36px;
     height: 36px;
     border-radius: $radius-md;
-    @include flex-center;
-    color: $color-text-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
     font-size: $font-size-base;
-    @include transition(background-color);
+    transition: background-color $transition-fast, color $transition-fast;
 
     &:hover {
-      background-color: $color-surface-raised;
-      color: $color-text-primary;
+      background-color: var(--surface-raised);
+      color: var(--text-primary);
     }
   }
 
   &__divider {
     width: 1px;
     height: 24px;
-    background-color: $color-border;
+    background-color: var(--border);
+  }
+
+  &__theme-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: $font-size-base;
+    transition: background-color $transition-fast, color $transition-fast;
+
+    &:hover {
+      background-color: var(--surface-raised);
+      color: var(--text-primary);
+    }
   }
 
   &__avatar {
     width: 32px;
     height: 32px;
     border-radius: $radius-full;
-    background: rgba($color-brand, 0.2);
-    color: $color-brand;
+    background: var(--brand-light);
+    color: var(--brand);
     font-size: $font-size-xs;
     font-weight: $font-weight-semibold;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    border: 1px solid var(--border);
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: var(--brand);
+    }
   }
 }

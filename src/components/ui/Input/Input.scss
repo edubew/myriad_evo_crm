@@ -1,4 +1,4 @@
-@use '../../../styles' as *;
+@use '../../../styles/tokens' as *;
 
 .input-field {
   display: flex;
@@ -8,35 +8,35 @@
   &__label {
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
-    color: $color-text-secondary;
+    color: var(--text-secondary);
   }
 
   &__input {
     width: 100%;
     padding: $space-3 $space-4;
-    background-color: $color-surface-raised;
-    border: 1px solid $color-border;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
     border-radius: $radius-md;
-    color: $color-text-primary;
+    color: var(--text-primary);
     font-size: $font-size-sm;
-    @include transition(border-color);
+    transition: border-color $transition-fast;
 
     &::placeholder {
-      color: $color-text-muted;
+      color: var(--text-muted);
     }
 
     &:focus {
       outline: none;
-      border-color: $color-brand;
+      border-color: var(--brand);
     }
   }
 
   &__error {
     font-size: $font-size-xs;
-    color: $color-danger;
+    color: var(--danger);
   }
 
   &--error &__input {
-    border-color: $color-danger;
+    border-color: var(--danger);
   }
 }

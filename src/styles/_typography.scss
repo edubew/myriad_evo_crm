@@ -1,74 +1,27 @@
-@use 'tokens' as *;
+.text-xs      { font-size: 11px; }
+.text-sm      { font-size: 13px; }
+.text-base    { font-size: 15px; }
+.text-md      { font-size: 17px; }
+.text-lg      { font-size: 20px; }
+.text-xl      { font-size: 24px; }
+.text-2xl     { font-size: 30px; }
 
-.text-xs {
-  font-size: $font-size-xs;
-}
-.text-sm {
-  font-size: $font-size-sm;
-}
-.text-base {
-  font-size: $font-size-base;
-}
-.text-md {
-  font-size: $font-size-md;
-}
-.text-lg {
-  font-size: $font-size-lg;
-}
-.text-xl {
-  font-size: $font-size-xl;
-}
-.text-2xl {
-  font-size: $font-size-2xl;
-}
-.text-3xl {
-  font-size: $font-size-3xl;
-}
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-brand     { color: var(--brand); }
+.text-success   { color: var(--success); }
+.text-warning   { color: var(--warning); }
+.text-danger    { color: var(--danger); }
 
-.text-primary {
-  color: $color-text-primary;
-}
-.text-secondary {
-  color: $color-text-secondary;
-}
-.text-muted {
-  color: $color-text-muted;
-}
-.text-brand {
-  color: $color-brand;
-}
-.text-success {
-  color: $color-success;
-}
-.text-warning {
-  color: $color-warning;
-}
-.text-danger {
-  color: $color-danger;
-}
+.font-regular  { font-weight: 400; }
+.font-medium   { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold     { font-weight: 700; }
 
-.font-regular {
-  font-weight: $font-weight-regular;
-}
-.font-medium {
-  font-weight: $font-weight-medium;
-}
-.font-semibold {
-  font-weight: $font-weight-semibold;
-}
-.font-bold {
-  font-weight: $font-weight-bold;
-}
-
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
-.text-left {
-  text-align: left;
-}
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
 
 .truncate {
   overflow: hidden;

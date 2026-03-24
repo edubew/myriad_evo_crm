@@ -1,8 +1,6 @@
 @use 'tokens' as *;
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,11 +14,13 @@ html {
 body {
   font-family: $font-family;
   font-size: $font-size-base;
-  color: $color-text-primary;
-  background-color: $color-bg;
+  color: var(--text-primary);
+  background-color: var(--bg);
   line-height: $line-height-normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color $transition-normal,
+              color $transition-normal;
 }
 
 a {
@@ -33,32 +33,27 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
-img,
-svg {
+img, svg {
   display: block;
   max-width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-semibold;
   line-height: $line-height-tight;
+  color: var(--text-primary);
 }

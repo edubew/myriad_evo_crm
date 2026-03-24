@@ -1,0 +1,84 @@
+@use 'tokens' as *;
+
+:root {
+  // Light mode defaults
+  --bg:              #{$light-bg};
+  --surface:         #{$light-surface};
+  --surface-raised:  #{$light-surface-raised};
+  --border:          #{$light-border};
+  --border-light:    #{$light-border-light};
+
+  --text-primary:    #{$light-text-primary};
+  --text-secondary:  #{$light-text-secondary};
+  --text-muted:      #{$light-text-muted};
+
+  --brand:           #{$color-brand};
+  --brand-hover:     #{$color-brand-hover};
+  --brand-light:     #{$color-brand-light};
+  --brand-text:      #{$color-brand-text};
+
+  --success:         #{$color-success};
+  --warning:         #{$color-warning};
+  --danger:          #{$color-danger};
+  --info:            #{$color-info};
+
+  // Sidebar always stays dark
+  --sidebar-bg:           #{$sidebar-bg};
+  --sidebar-surface:      #{$sidebar-surface};
+  --sidebar-border:       #{$sidebar-border};
+  --sidebar-text:         #{$sidebar-text};
+  --sidebar-text-muted:   #{$sidebar-text-muted};
+  --sidebar-active-bg:    #{$sidebar-active-bg};
+  --sidebar-active-text:  #{$sidebar-active-text};
+
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  --radius-sm:   #{$radius-sm};
+  --radius-md:   #{$radius-md};
+  --radius-lg:   #{$radius-lg};
+  --radius-full: #{$radius-full};
+
+  --transition-fast:   #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             #{$dark-bg};
+    --surface:        #{$dark-surface};
+    --surface-raised: #{$dark-surface-raised};
+    --border:         #{$dark-border};
+    --border-light:   #{$dark-border-light};
+
+    --text-primary:   #{$dark-text-primary};
+    --text-secondary: #{$dark-text-secondary};
+    --text-muted:     #{$dark-text-muted};
+  }
+}
+
+// Manual dark mode override
+[data-theme="dark"] {
+  --bg:             #{$dark-bg};
+  --surface:        #{$dark-surface};
+  --surface-raised: #{$dark-surface-raised};
+  --border:         #{$dark-border};
+  --border-light:   #{$dark-border-light};
+
+  --text-primary:   #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --text-muted:     #{$dark-text-muted};
+}
+
+[data-theme="light"] {
+  --bg:             #{$light-bg};
+  --surface:        #{$light-surface};
+  --surface-raised: #{$light-surface-raised};
+  --border:         #{$light-border};
+  --border-light:   #{$light-border-light};
+
+  --text-primary:   #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-muted:     #{$light-text-muted};
+}
