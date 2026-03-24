@@ -1,0 +1,274 @@
+@use '../../styles/tokens' as *;
+
+.calendar-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+  }
+
+  &__body {
+    flex: 1;
+    min-height: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    padding: $space-4;
+    overflow: hidden;
+
+    @media (max-width: #{$bp-mobile}) {
+      padding: $space-2;
+    }
+  }
+}
+
+// FULLCALENDAR OVERRIDES
+
+.fc {
+  height: 100%;
+  font-family: $font-family;
+
+  .fc-toolbar {
+    margin-bottom: $space-4;
+    flex-wrap: wrap;
+    gap: $space-2;
+
+    @media (max-width: #{$bp-mobile}) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .fc-toolbar-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  .fc-button {
+    background: var(--surface-raised) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-secondary) !important;
+    font-size: $font-size-xs !important;
+    font-weight: $font-weight-medium !important;
+    padding: $space-2 $space-3 !important;
+    border-radius: $radius-md !important;
+    text-transform: capitalize !important;
+    box-shadow: none !important;
+    transition: all $transition-fast;
+    font-family: $font-family !important;
+
+    &:hover {
+      background: var(--border) !important;
+      color: var(--text-primary) !important;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+
+  .fc-button-active,
+  .fc-button-primary:not(:disabled).fc-button-active {
+    background: var(--brand-light) !important;
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+  }
+
+  .fc-today-button:disabled {
+    opacity: 0.4 !important;
+  }
+
+  .fc-scrollgrid {
+    border-color: var(--border) !important;
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  .fc-scrollgrid-section > td,
+  .fc-scrollgrid-section > th {
+    border-color: var(--border) !important;
+  }
+
+  td,
+  th {
+    border-color: var(--border) !important;
+  }
+
+  .fc-col-header-cell {
+    background: var(--surface-raised);
+    padding: $space-2 0;
+  }
+
+  .fc-col-header-cell-cushion {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: var(--text-muted);
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .fc-daygrid-day {
+    background: var(--surface);
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background: var(--surface-raised);
+    }
+  }
+
+  .fc-day-today {
+    background: var(--brand-light) !important;
+  }
+
+  .fc-daygrid-day-number {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    text-decoration: none !important;
+    padding: $space-2;
+  }
+
+  .fc-day-today .fc-daygrid-day-number {
+    color: var(--brand);
+    font-weight: $font-weight-semibold;
+  }
+
+  .fc-day-other .fc-daygrid-day-number {
+    color: var(--text-muted);
+  }
+
+  .fc-event {
+    border: none !important;
+    border-radius: $radius-sm !important;
+    font-size: $font-size-xs !important;
+    font-weight: $font-weight-medium !important;
+    padding: 2px $space-2 !important;
+    cursor: pointer;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .fc-event-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fc-timegrid-slot {
+    height: 40px;
+    border-color: var(--border) !important;
+  }
+
+  .fc-timegrid-slot-label-cushion {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+
+  .fc-timegrid-now-indicator-line {
+    border-color: var(--brand);
+  }
+
+  .fc-timegrid-now-indicator-arrow {
+    border-top-color: var(--brand);
+    border-bottom-color: var(--brand);
+  }
+
+  .fc-list {
+    border-color: var(--border) !important;
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  .fc-list-day-cushion {
+    background: var(--surface-raised) !important;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .fc-list-event {
+    background: var(--surface) !important;
+    transition: background-color $transition-fast;
+
+    &:hover td {
+      background: var(--surface-raised) !important;
+    }
+  }
+
+  .fc-list-event-title a {
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    font-size: $font-size-sm;
+  }
+
+  .fc-list-event-time {
+    color: var(--text-muted) !important;
+    font-size: $font-size-xs;
+  }
+
+  .fc-list-empty {
+    background: var(--surface);
+  }
+
+  .fc-list-empty-cushion {
+    color: var(--text-muted);
+    font-size: $font-size-sm;
+  }
+
+  .fc-daygrid-more-link {
+    font-size: $font-size-xs;
+    color: var(--brand);
+    font-weight: $font-weight-medium;
+  }
+
+  .fc-popover {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: $radius-md !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  .fc-popover-header {
+    background: var(--surface-raised) !important;
+    color: var(--text-primary) !important;
+    padding: $space-2 $space-3 !important;
+    font-size: $font-size-xs !important;
+    font-weight: $font-weight-semibold !important;
+  }
+
+  .fc-popover-close {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+  }
+}
