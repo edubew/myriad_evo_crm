@@ -1,0 +1,93 @@
+@use '../../styles/tokens' as *;
+
+.client-modal {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__errors {
+    padding: $space-3 $space-4;
+    background: rgba(196, 64, 64, 0.1);
+    border: 1px solid rgba(196, 64, 64, 0.3);
+    border-radius: $radius-md;
+    color: var(--danger);
+    font-size: $font-size-sm;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+  }
+
+  &__select {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    font-family: $font-family;
+    transition: border-color $transition-fast;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    option {
+      background: var(--surface-raised);
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    font-family: $font-family;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color $transition-fast;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-2;
+    padding-top: $space-2;
+    border-top: 1px solid var(--border);
+    margin-top: $space-2;
+  }
+}

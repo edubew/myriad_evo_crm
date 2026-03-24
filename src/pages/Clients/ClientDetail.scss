@@ -1,0 +1,235 @@
+@use '../../styles/tokens' as *;
+
+.client-detail {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__loading {
+    text-align: center;
+    color: var(--text-muted);
+    padding: $space-16;
+    font-size: $font-size-sm;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+    transition: color $transition-fast;
+    width: fit-content;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    padding: $space-6;
+    display: flex;
+    align-items: flex-start;
+    gap: $space-5;
+    flex-wrap: wrap;
+
+    @media (max-width: #{$bp-mobile}) {
+      flex-direction: column;
+    }
+  }
+
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-lg;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__hero-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__hero-top {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__name {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__industry {
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    flex-wrap: wrap;
+    margin-top: $space-1;
+  }
+
+  &__meta-link {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--brand);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-5;
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    padding: $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__section-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__empty {
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+  }
+
+  &__notes {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: $line-height-loose;
+    white-space: pre-wrap;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-3;
+  background: var(--surface-raised);
+  border-radius: $radius-md;
+  border: 1px solid var(--border);
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__primary {
+    font-size: $font-size-xs;
+    color: var(--brand);
+    background: var(--brand-light);
+    padding: 1px $space-2;
+    border-radius: $radius-full;
+    font-weight: $font-weight-medium;
+  }
+
+  &__role {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: $space-1;
+
+    a {
+      font-size: $font-size-xs;
+      color: var(--text-secondary);
+      transition: color $transition-fast;
+
+      &:hover {
+        color: var(--brand);
+      }
+    }
+  }
+
+  &__remove {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    transition: color $transition-fast;
+    flex-shrink: 0;
+    padding: $space-1;
+
+    &:hover {
+      color: var(--danger);
+    }
+  }
+}

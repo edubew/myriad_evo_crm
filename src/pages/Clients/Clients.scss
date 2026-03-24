@@ -1,0 +1,226 @@
+@use '../../styles/tokens' as *;
+
+.clients-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    margin-top: $space-1;
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+    padding: $space-2 $space-4;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    font-family: $font-family;
+    transition: border-color $transition-fast;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+  }
+
+  &__status-filters {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__filter-btn {
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    transition: all $transition-fast;
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &:hover {
+      border-color: var(--border-light);
+      color: var(--text-primary);
+    }
+
+    &--active {
+      background: var(--brand-light);
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+  }
+
+  &__loading {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: $font-size-sm;
+    padding: $space-16;
+  }
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $space-4;
+
+  @media (max-width: #{$bp-mobile}) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.client-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__industry {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    background: var(--surface-raised);
+    border-radius: $radius-md;
+  }
+
+  &__contact-name {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    font-weight: $font-weight-medium;
+  }
+
+  &__contact-role {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+
+    &::before {
+      content: "·";
+      margin-right: $space-2;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__meta-item {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__edit-btn {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: var(--text-muted);
+    padding: $space-1 $space-2;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      background: var(--surface-raised);
+      color: var(--brand);
+    }
+  }
+}
