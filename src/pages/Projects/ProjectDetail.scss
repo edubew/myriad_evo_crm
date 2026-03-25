@@ -1,0 +1,126 @@
+@use '../../styles/tokens' as *;
+
+.project-detail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__loading {
+    text-align: center;
+    color: var(--text-muted);
+    padding: $space-16;
+    font-size: $font-size-sm;
+  }
+
+  &__back {
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+    transition: color $transition-fast;
+    width: fit-content;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    padding: $space-5 $space-6;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-4;
+    flex-wrap: wrap;
+
+    @media (max-width: #{$bp-mobile}) {
+      padding: $space-4;
+    }
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__color-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+    margin-bottom: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+    line-height: $line-height-normal;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: $space-5;
+    flex-shrink: 0;
+  }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: $space-5;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__stat-value {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+  }
+
+  &__stat-label {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+
+  &__progress {
+    padding: 0 2px;
+  }
+
+  &__progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: $radius-full;
+    overflow: hidden;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width $transition-slow;
+  }
+}

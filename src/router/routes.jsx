@@ -15,6 +15,8 @@ import ClientDetail from "../pages/Clients/ClientDetail";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ProtectedRoute from "./ProtectedRoute";
+import Projects from "../pages/Projects/Projects";
+import ProjectDetail from "../pages/Projects/ProjectDetail";
 
 function AppRouter() {
   return (
@@ -40,6 +42,8 @@ function AppRouter() {
                     <Route path="calendar" element={<Calendar />} />
                     <Route path="clients" element={<Clients />} />
                     <Route path="clients/:id" element={<ClientDetail />} />
+                    <Route path="projects" element={<Projects />} />
+                    <Route path="projects/:id" element={<ProjectDetail />} />
                   </Routes>
                 </AppLayout>
               </ProtectedRoute>
