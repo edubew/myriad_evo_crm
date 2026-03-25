@@ -1,0 +1,215 @@
+@use '../../styles/tokens' as *;
+
+.team-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    margin-top: $space-1;
+  }
+
+  &__loading {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: $font-size-sm;
+    padding: $space-16;
+  }
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-4;
+
+  @media (max-width: #{$bp-mobile}) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.member-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__role {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+  }
+
+  &__dept {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    padding: 2px $space-2;
+    border-radius: $radius-full;
+    margin-top: $space-1;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: $space-3;
+    border-top: 1px solid var(--border);
+  }
+
+  &__contact-link {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--brand);
+    }
+  }
+}
+
+.team-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__errors {
+    padding: $space-3 $space-4;
+    background: rgba(196, 64, 64, 0.1);
+    border: 1px solid rgba(196, 64, 64, 0.3);
+    border-radius: $radius-md;
+    color: var(--danger);
+    font-size: $font-size-sm;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+  }
+
+  &__select {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    transition: border-color $transition-fast;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    option {
+      background: var(--surface-raised);
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color $transition-fast;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-2;
+    border-top: 1px solid var(--border);
+    margin-top: $space-2;
+  }
+
+  &__actions-right {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-left: auto;
+  }
+}

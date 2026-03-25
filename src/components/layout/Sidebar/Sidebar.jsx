@@ -7,6 +7,16 @@ const navigation = [
   { label: "Dashboard", icon: "⊞", path: "/dashboard" },
   { label: "Calendar", icon: "◷", path: "/calendar" },
   { label: "Projects", icon: "◈", path: "/projects" },
+  {
+    label: "Company",
+    icon: "⬡",
+    path: "/company",
+    children: [
+      { label: "Team", path: "/team" },
+      { label: "Goals", path: "/goals" },
+      { label: "Documents", path: "/documents" },
+    ],
+  },
   { label: "Clients", icon: "◎", path: "/clients" },
   {
     label: "Sales",
@@ -15,16 +25,6 @@ const navigation = [
     children: [
       { label: "Leads", path: "/sales/leads" },
       { label: "Pipeline", path: "/sales/pipeline" },
-    ],
-  },
-  {
-    label: "Company",
-    icon: "⬡",
-    path: "/company",
-    children: [
-      { label: "Team", path: "/team" },
-      { label: "Meetings", path: "/meetings" },
-      { label: "Goals", path: "/goals" },
     ],
   },
   {

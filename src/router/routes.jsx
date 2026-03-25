@@ -17,6 +17,9 @@ import Register from "../pages/Register/Register";
 import ProtectedRoute from "./ProtectedRoute";
 import Projects from "../pages/Projects/Projects";
 import ProjectDetail from "../pages/Projects/ProjectDetail";
+import Team from "../pages/Company/Team";
+import Goals from "../pages/Company/Goals";
+import Documents from "../pages/Company/Documents";
 
 function AppRouter() {
   return (
@@ -44,6 +47,9 @@ function AppRouter() {
                     <Route path="clients/:id" element={<ClientDetail />} />
                     <Route path="projects" element={<Projects />} />
                     <Route path="projects/:id" element={<ProjectDetail />} />
+                    <Route path="team" element={<Team />} />
+                    <Route path="goals" element={<Goals />} />
+                    <Route path="documents" element={<Documents />} />
                   </Routes>
                 </AppLayout>
               </ProtectedRoute>
