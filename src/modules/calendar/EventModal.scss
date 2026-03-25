@@ -153,4 +153,40 @@
     gap: $space-2;
     margin-left: auto;
   }
+
+  &__project-link {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+    padding: $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    border-left: 3px solid var(--brand);
+  }
+
+  &__project-link-icon {
+    font-size: $font-size-xl;
+    color: var(--brand);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__project-link-info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__project-link-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__project-link-note {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: $line-height-normal;
+  }
 }

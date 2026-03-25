@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "../../components/ui/Modal/Modal";
 import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
-import Badge from "../../components/ui/Badge/Badge";
 import "./EventModal.scss";
 
 const EVENT_TYPES = [
-  { value: "meeting", label: "Meeting", color: "#6C63FF" },
-  { value: "deadline", label: "Deadline", color: "#F87171" },
-  { value: "follow_up", label: "Follow-up", color: "#FBBF24" },
-  { value: "task", label: "Task", color: "#34D399" },
+  { value: "meeting", label: "Meeting", color: "#8B2A2A" },
+  { value: "deadline", label: "Deadline", color: "#B34A30" },
+  { value: "follow_up", label: "Follow-up", color: "#A87830" },
+  { value: "task", label: "Task", color: "#4A8C6A" },
 ];
 
 const defaultForm = {
@@ -23,11 +23,13 @@ const defaultForm = {
 };
 
 function EventModal({ isOpen, onClose, onSave, onDelete, event }) {
+  const navigate = useNavigate();
   const [form, setForm] = useState(defaultForm);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const isEditing = !!event?.id;
+  const isProjectLink = event?.source === "project";
 
   useEffect(() => {
     if (event) {
@@ -82,7 +84,39 @@ function EventModal({ isOpen, onClose, onSave, onDelete, event }) {
     }
   };
 
-  // const selectedType = EVENT_TYPES.find((t) => t.value === form.event_type);
+  // Project deadline — read only view
+  if (isProjectLink) {
+    return (
+      <Modal isOpen={isOpen} onClose={onClose} title="Project Deadline">
+        <div className="event-modal">
+          <div className="event-modal__project-link">
+            <div className="event-modal__project-link-icon">◈</div>
+            <div className="event-modal__project-link-info">
+              <p className="event-modal__project-link-title">{event.title}</p>
+              <p className="event-modal__project-link-note">
+                This deadline is managed by a project. Edit or remove it from
+                the project page.
+              </p>
+            </div>
+          </div>
+          <div className="event-modal__actions">
+            <Button variant="ghost" onClick={onClose}>
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                onClose();
+                navigate(`/projects/${event.source_id}`);
+              }}
+            >
+              Go to Project
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    );
+  }
 
   return (
     <Modal
@@ -115,7 +149,7 @@ function EventModal({ isOpen, onClose, onSave, onDelete, event }) {
                   form.event_type === type.value
                     ? {
                         borderColor: type.color,
-                        backgroundColor: `${type.color}15`,
+                        backgroundColor: `${type.color}18`,
                       }
                     : {}
                 }
@@ -129,7 +163,7 @@ function EventModal({ isOpen, onClose, onSave, onDelete, event }) {
                 <span
                   className="event-modal__type-dot"
                   style={{ background: type.color }}
-                ></span>
+                />
                 {type.label}
               </button>
             ))}
