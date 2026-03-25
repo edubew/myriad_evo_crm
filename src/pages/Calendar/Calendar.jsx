@@ -70,6 +70,17 @@ function Calendar() {
        await createEvent(formData);
      }
   };
+
+  const renderEventContent = (eventInfo) => {
+    const isProjectDeadline =
+      eventInfo.event.extendedProps.source === "project";
+    return (
+      <div className="fc-event-custom">
+        {isProjectDeadline && <span className="fc-event-custom__lock">◈</span>}
+        <span className="fc-event-custom__title">{eventInfo.event.title}</span>
+      </div>
+    );
+  };
   
   return (
     <div className="calendar-page">
@@ -125,6 +136,7 @@ function Calendar() {
           eventDrop={handleEventDrop}
           height="100%"
           eventDisplay="block"
+          eventContent={renderEventContent}
         />
       </div>
 

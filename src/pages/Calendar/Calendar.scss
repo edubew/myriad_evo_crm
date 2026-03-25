@@ -271,4 +271,25 @@
     color: var(--text-muted) !important;
     opacity: 1 !important;
   }
+
+  .fc-event-custom {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 4px;
+    overflow: hidden;
+
+    &__lock {
+      font-size: 9px;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+
+    &__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 11px;
+    }
+  }
 }
