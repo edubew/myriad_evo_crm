@@ -1,0 +1,185 @@
+@use '../../styles/tokens' as *;
+
+.kanban {
+  flex: 1;
+  overflow: hidden;
+
+  &__board {
+    display: flex;
+    gap: $space-4;
+    height: 100%;
+    overflow-x: auto;
+    padding-bottom: $space-4;
+  }
+
+  &__column {
+    flex-shrink: 0;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @media (max-width: #{$bp-mobile}) {
+      width: 260px;
+    }
+  }
+
+  &__column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-2 0;
+  }
+
+  &__column-title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__column-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+
+  &__column-count {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    background: var(--surface-raised);
+    padding: 1px $space-2;
+    border-radius: $radius-full;
+    font-weight: $font-weight-regular;
+  }
+
+  &__add-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: $font-size-lg;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: var(--surface-raised);
+      color: var(--text-primary);
+    }
+  }
+
+  &__drop-zone {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding: $space-2;
+    border-radius: $radius-lg;
+    border: 2px dashed transparent;
+    transition: all $transition-fast;
+
+    &--active {
+      border-color: var(--brand);
+      background: var(--brand-light);
+    }
+  }
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    padding: $space-6;
+    border-radius: $radius-md;
+    border: 1px dashed var(--border);
+  }
+
+  &__card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all $transition-fast;
+    user-select: none;
+
+    &:hover {
+      border-color: var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    &--dragging {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+      transform: rotate(1deg);
+    }
+  }
+
+  &__card-priority {
+    width: 3px;
+    flex-shrink: 0;
+  }
+
+  &__card-body {
+    padding: $space-3;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__card-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    line-height: $line-height-normal;
+  }
+
+  &__card-desc {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: $line-height-normal;
+  }
+
+  &__card-footer {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    flex-wrap: wrap;
+    margin-top: $space-1;
+  }
+
+  &__card-date {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  &__card-assignee {
+    width: 22px;
+    height: 22px;
+    border-radius: $radius-full;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 9px;
+    font-weight: $font-weight-bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
