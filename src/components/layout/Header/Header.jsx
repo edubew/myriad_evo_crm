@@ -1,7 +1,23 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Header.scss";
 
+const PAGE_TITLES = {
+  "/dashboard": "Dashboard",
+  "/calendar": "Calendar",
+  "/projects": "Projects",
+  "/clients": "Clients",
+  "/sales/pipeline": "Sales Pipeline",
+  "/sales/leads": "Leads",
+  "/team": "Team",
+  "/documents": "Documents",
+  "/goals": "Goals",
+  "/finance/revenue": "Revenue",
+  "/finance/invoices": "Invoices",
+};
+
 function Header({ onMenuToggle }) {
+  const location = useLocation();
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
   });
@@ -38,6 +54,15 @@ function Header({ onMenuToggle }) {
     light: "Light",
   }[theme];
 
+  // handles dynamic routes like /projects/:id
+  const getTitle = () => {
+    const path = location.pathname;
+    if (PAGE_TITLES[path]) return PAGE_TITLES[path];
+    if (path.startsWith("/projects/")) return "Project";
+    if (path.startsWith("/clients/")) return "Client";
+    return "Myriad Evo";
+  };
+
   return (
     <header className="header">
       <div className="header__left">
@@ -48,7 +73,7 @@ function Header({ onMenuToggle }) {
         >
           ☰
         </button>
-        <h2 className="header__title">Dashboard</h2>
+        <h2 className="header__title">{getTitle()}</h2>
       </div>
 
       <div className="header__right">
