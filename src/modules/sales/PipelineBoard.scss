@@ -1,0 +1,208 @@
+@use '../../styles/tokens' as *;
+
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  height: 100%;
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__add-btn {
+    padding: $space-2 $space-4;
+    background: var(--brand);
+    color: var(--brand-text);
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background: var(--brand-hover);
+    }
+  }
+
+  &__board {
+    display: flex;
+    gap: $space-3;
+    overflow-x: auto;
+    flex: 1;
+    padding-bottom: $space-4;
+  }
+
+  &__column {
+    flex-shrink: 0;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__stage-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    padding: $space-3;
+    display: flex;
+    gap: $space-3;
+    align-items: center;
+  }
+
+  &__stage-bar {
+    width: 3px;
+    height: 36px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+
+  &__stage-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__stage-top {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__stage-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__stage-count {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    background: var(--surface-raised);
+    padding: 1px $space-2;
+    border-radius: $radius-full;
+  }
+
+  &__stage-value {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  &__stage-add {
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: $font-size-lg;
+    transition: all $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      background: var(--surface-raised);
+      color: var(--text-primary);
+    }
+  }
+
+  &__drop-zone {
+    flex: 1;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding: $space-2;
+    border-radius: $radius-lg;
+    border: 2px dashed transparent;
+    transition: all $transition-fast;
+
+    &--active {
+      border-color: var(--brand);
+      background: var(--brand-light);
+    }
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    padding: $space-4;
+    border: 1px dashed var(--border);
+    border-radius: $radius-md;
+  }
+}
+
+// ── Deal card ─────────────────────────────
+.deal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-3;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  transition: all $transition-fast;
+  user-select: none;
+
+  &:hover {
+    border-color: var(--border-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &--dragging {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand);
+    transform: rotate(1deg);
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    line-height: $line-height-normal;
+  }
+
+  &__value {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__prob-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: $radius-full;
+    overflow: hidden;
+  }
+
+  &__prob-fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width $transition-normal;
+  }
+
+  &__prob-label {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    min-width: 28px;
+    text-align: right;
+  }
+
+  &__close {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+}

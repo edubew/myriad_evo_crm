@@ -20,6 +20,8 @@ import ProjectDetail from "../pages/Projects/ProjectDetail";
 import Team from "../pages/Company/Team";
 import Goals from "../pages/Company/Goals";
 import Documents from "../pages/Company/Documents";
+import Pipeline from "../pages/Sales/Pipeline";
+import Leads from "../pages/Sales/Leads"
 
 function AppRouter() {
   return (
@@ -50,6 +52,8 @@ function AppRouter() {
                     <Route path="team" element={<Team />} />
                     <Route path="goals" element={<Goals />} />
                     <Route path="documents" element={<Documents />} />
+                    <Route path="sales/pipeline" element={<Pipeline />} />
+                    <Route path="sales/leads" element={<Leads />} />
                   </Routes>
                 </AppLayout>
               </ProtectedRoute>

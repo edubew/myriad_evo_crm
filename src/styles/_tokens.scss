@@ -1,103 +1,103 @@
 // Brand
-$color-brand:         #8B2A2A;
-$color-brand-hover:   #B34A30;
-$color-brand-light:   rgba(139, 42, 42, 0.18);
-$color-brand-text:    #F9E8DC;
+$color-brand: #c46a4a;
+$color-brand-hover: #d17a5c;
+$color-brand-light: rgba(196, 106, 74, 0.18);
+$color-brand-text: #f5f3f1;
 
 // Status
-$color-success:       #4A8C6A;
-$color-warning:       #A87830;
-$color-danger:        #C44040;
-$color-info:          #7A8A96;
+$color-success: #4a8c6a;
+$color-warning: #a87830;
+$color-danger: #c44040;
+$color-info: #7a8a96;
 
 // Light mode surfaces
-$light-bg:            #F5EDE6;
-$light-surface:       #FFFFFF;
-$light-surface-raised:#EDE0D4;
-$light-border:        #C8A882;
-$light-border-light:  #DDD0C0;
+$light-bg: #f6f1eb;
+$light-surface: #ffffff;
+$light-surface-raised: #efe7df;
+$light-border: #e3dcd4;
+$light-border-light: #d6cdc3;
 
 // Light mode text
-$light-text-primary:  #180A06;
-$light-text-secondary:#8A7060;
-$light-text-muted:    #C8A882;
+$light-text-primary: #1c1a18;
+$light-text-secondary: #5f5a55;
+$light-text-muted: #8a847d;
 
 // Dark mode surfaces
-$dark-bg:             #120915;
-$dark-surface:        #1A0A1E;
-$dark-surface-raised: #2A1030;
-$dark-border:         #3A1840;
-$dark-border-light:   #4A2050;
+$dark-bg: #0f0e0d;
+$dark-surface: #1a1816;
+$dark-surface-raised: #221f1c;
+$dark-border: #2a2623;
+$dark-border-light: #3a342f;
 
 // Dark mode text
-$dark-text-primary:   #F0E0F0;
-$dark-text-secondary: #C8A0C0;
-$dark-text-muted:     #5A4060;
+$dark-text-primary: #f5f3f1;
+$dark-text-secondary: #a8a29e;
+$dark-text-muted: #6f6a66;
 
 // Sidebar
-$sidebar-bg:          #0D0610;
-$sidebar-surface:     #1A0A1E;
-$sidebar-border:      #2A1030;
-$sidebar-text:        #F0E0F0;
-$sidebar-text-muted:  #4A3050;
-$sidebar-active-bg:   rgba(139, 42, 42, 0.22);
-$sidebar-active-text: #E8A0B0;
+$sidebar-bg: #141210;
+$sidebar-surface: #1a1816;
+$sidebar-border: #2a2623;
+$sidebar-text: #f5f3f1;
+$sidebar-text-muted: #6f6a66;
+$sidebar-active-bg: rgba(196, 106, 74, 0.12);
+$sidebar-active-text: #d8c3a5;
 
 // Typography
-$font-family:         'Inter', sans-serif;
-$font-size-xs:        11px;
-$font-size-sm:        13px;
-$font-size-base:      15px;
-$font-size-md:        17px;
-$font-size-lg:        20px;
-$font-size-xl:        24px;
-$font-size-2xl:       30px;
-$font-size-3xl:       36px;
+$font-family: "Inter", sans-serif;
+$font-size-xs: 11px;
+$font-size-sm: 13px;
+$font-size-base: 15px;
+$font-size-md: 17px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-2xl: 30px;
+$font-size-3xl: 36px;
 
-$font-weight-regular:  400;
-$font-weight-medium:   500;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
 $font-weight-semibold: 600;
-$font-weight-bold:     700;
+$font-weight-bold: 700;
 
-$line-height-tight:  1.2;
+$line-height-tight: 1.2;
 $line-height-normal: 1.5;
-$line-height-loose:  1.8;
+$line-height-loose: 1.8;
 
 // Spacing
-$space-1:   4px;
-$space-2:   8px;
-$space-3:   12px;
-$space-4:   16px;
-$space-5:   20px;
-$space-6:   24px;
-$space-8:   32px;
-$space-10:  40px;
-$space-12:  48px;
-$space-16:  64px;
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
 
-$radius-sm:   4px;
-$radius-md:   8px;
-$radius-lg:   12px;
-$radius-xl:   16px;
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
 $radius-full: 9999px;
 
 // Shadows
-$shadow-sm:  0 1px 4px rgba(13, 6, 16, 0.3);
-$shadow-md:  0 4px 16px rgba(13, 6, 16, 0.4);
-$shadow-lg:  0 8px 32px rgba(13, 6, 16, 0.5);
+$shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.45);
 
 // Transitions
-$transition-fast:   0.15s ease;
+$transition-fast: 0.15s ease;
 $transition-normal: 0.25s ease;
-$transition-slow:   0.4s ease;
+$transition-slow: 0.4s ease;
 
 // Layout
-$sidebar-width:     240px;
-$header-height:     60px;
-$sidebar-collapsed:  64px;
-$header-height:      60px;
+$sidebar-width: 240px;
+$header-height: 60px;
+$sidebar-collapsed: 64px;
+$header-height: 60px;
 
 // Breakpoints
-$bp-mobile:  640px;
-$bp-tablet:  1024px;
+$bp-mobile: 640px;
+$bp-tablet: 1024px;
 $bp-desktop: 1280px;
