@@ -1,0 +1,515 @@
+@use '../../styles/tokens' as *;
+
+.revenue-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    margin-top: $space-1;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__alloc-btn {
+    padding: $space-2 $space-4;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    font-weight: $font-weight-medium;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: var(--border-light);
+      color: var(--text-primary);
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__select {
+    padding: $space-2 $space-4;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    transition: border-color $transition-fast;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    option { background: var(--surface); }
+  }
+
+  &__summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-4;
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: $space-4;
+    align-items: start;
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ── Summary cards ─────────────────────────
+.rev-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-5;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  &--total::before  { background: var(--brand); }
+  &--salary::before { background: #7A8A96; }
+  &--ops::before    { background: #A87830; }
+  &--profit::before { background: #4A8C6A; }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-2;
+  }
+
+  &__value {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  &__sub {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-top: $space-2;
+  }
+}
+
+// ── Allocation bar ────────────────────────
+.alloc-bar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-4 $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+  }
+
+  &__bar {
+    display: flex;
+    height: 10px;
+    border-radius: $radius-full;
+    overflow: hidden;
+    gap: 2px;
+  }
+
+  &__seg {
+    border-radius: $radius-full;
+    transition: width $transition-slow;
+
+    &--salary { background: #7A8A96; }
+    &--ops    { background: #A87830; }
+    &--profit { background: #4A8C6A; }
+  }
+
+  &__legend {
+    display: flex;
+    gap: $space-5;
+    flex-wrap: wrap;
+  }
+
+  &__legend-item {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    &--salary::before { background: #7A8A96; }
+    &--ops::before    { background: #A87830; }
+    &--profit::before { background: #4A8C6A; }
+
+    &--salary { color: #7A8A96; }
+    &--ops    { color: #A87830; }
+    &--profit { color: #4A8C6A; }
+  }
+}
+
+// ── Revenue table ─────────────────────────
+.rev-table-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  &__loading {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: $font-size-sm;
+    padding: $space-16;
+  }
+}
+
+.rev-table-head {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 80px 80px;
+  padding: $space-3 $space-5;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @media (max-width: #{$bp-tablet}) {
+    display: none;
+  }
+}
+
+.rev-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 80px 80px;
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: var(--surface-raised); }
+
+  @media (max-width: #{$bp-tablet}) {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-2;
+    padding: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+  }
+
+  &__date {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  &__amount {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+
+  &__alloc {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+
+    &--profit { color: #4A8C6A; font-weight: $font-weight-medium; }
+  }
+
+  &__pct {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+  }
+}
+
+.rev-badge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: 2px $space-2;
+  border-radius: $radius-full;
+  text-transform: capitalize;
+
+  &--deal   { background: rgba(139, 42, 42, 0.12); color: var(--brand); }
+  &--manual { background: var(--surface-raised); color: var(--text-muted); }
+  &--paid   { background: rgba(74, 140, 106, 0.12); color: #4A8C6A; }
+  &--pending { background: rgba(168, 120, 48, 0.12); color: #A87830; }
+}
+
+// ── Chart card ────────────────────────────
+.rev-chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+}
+
+// ── Form styles ───────────────────────────
+.rev-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__errors {
+    padding: $space-3 $space-4;
+    background: rgba(196, 64, 64, 0.1);
+    border: 1px solid rgba(196, 64, 64, 0.3);
+    border-radius: $radius-md;
+    color: var(--danger);
+    font-size: $font-size-sm;
+  }
+
+  &__hint {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: $line-height-normal;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+  }
+
+  &__input,
+  &__select {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    option { background: var(--surface-raised); }
+
+    &::-webkit-calendar-picker-indicator {
+      filter: opacity(0.4);
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: $space-3 $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    resize: vertical;
+    min-height: 70px;
+    transition: border-color $transition-fast;
+
+    &::placeholder { color: var(--text-muted); }
+    &:focus { outline: none; border-color: var(--brand); }
+  }
+
+  // ── Allocation section ──────────────────
+  &__alloc {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    padding: $space-4;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+  }
+
+  &__alloc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__alloc-total {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    &--ok  { color: #4A8C6A; }
+    &--err { color: var(--danger); }
+  }
+
+  &__alloc-rows {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__alloc-row {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__alloc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  &__alloc-label {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  &__alloc-input {
+    width: 64px;
+    padding: $space-2 $space-2;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    text-align: right;
+    font-family: $font-family;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+  }
+
+  &__alloc-pct {
+    font-size: $font-size-sm;
+    color: var(--text-muted);
+    width: 14px;
+  }
+
+  &__alloc-preview {
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    min-width: 110px;
+    text-align: right;
+  }
+
+  &__alloc-total-bar {
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-align: center;
+
+    &--ok  {
+      background: rgba(74, 140, 106, 0.1);
+      color: #4A8C6A;
+    }
+
+    &--err {
+      background: rgba(196, 64, 64, 0.1);
+      color: var(--danger);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-2;
+    border-top: 1px solid var(--border);
+    margin-top: $space-2;
+  }
+
+  &__actions-right {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-left: auto;
+  }
+}

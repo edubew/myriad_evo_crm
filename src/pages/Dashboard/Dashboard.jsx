@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -34,12 +35,9 @@ const KANBAN_COLS = [
   { id: "completed", label: "Done", color: "#4A8C6A" },
 ];
 
-const DEV_USER = { first_name: "Inayat" };
-
 function Dashboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const activeUser = user || DEV_USER;
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -71,9 +69,7 @@ function Dashboard() {
     try {
       const result = await dashboardService.getTodos();
       setTodos(result);
-    } catch {
-      /* empty */
-    }
+    } catch { /* empty */ }
   };
 
   const handleToggleTodo = async (todo) => {
@@ -97,18 +93,14 @@ function Dashboard() {
       setTodos((prev) => [...prev, created]);
       setNewTodo("");
       setAdding(false);
-    } catch {
-      /* empty */
-    }
+    } catch { /* empty */ }
   };
 
   const handleDeleteTodo = async (id) => {
     setTodos((prev) => prev.filter((t) => t.id !== id));
     try {
       await dashboardService.deleteTodo(id);
-    } catch {
-      /* empty */
-    }
+    } catch { /* empty */ }
   };
 
   const greeting = () => {
@@ -242,7 +234,7 @@ function Dashboard() {
       <div className="dashboard__greeting">
         <div>
           <h1 className="dashboard__greeting-title">
-            {greeting()}, {activeUser.first_name} 👋
+            {greeting()}, {user.first_name} 👋
           </h1>
           <p className="dashboard__greeting-date">{formatDate()}</p>
         </div>
