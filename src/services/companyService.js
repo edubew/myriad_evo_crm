@@ -43,19 +43,21 @@ export const companyService = {
     await api.delete(`/goals/${id}`);
   },
 
-  async getDocuments(params = {}) {
+  async getDocuments(params) {
     const response = await api.get("/documents", { params });
     return response.data.data;
   },
 
-  async createDocument(data) {
-    const response = await api.post("/documents", { document: data });
+  async createDocument(formData) {
+    const response = await api.post("/documents", formData, {
+      headers: { 'Content-Type': 'multipart/form-data'}
+    });
     return response.data.data;
   },
 
-  async updateDocument(id, data) {
-    const response = await api.put(`/documents/${id}`, {
-      document: data,
+  async updateDocument(id, formData) {
+    const response = await api.put(`/documents/${id}`, formData, {
+      headers: { 'Content-Type' : 'multipart/form-data'}
     });
     return response.data.data;
   },
