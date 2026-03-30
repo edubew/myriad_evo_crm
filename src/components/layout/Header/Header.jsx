@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+import Avatar from "../../ui/Avatar/Avatar";
 import "./Header.scss";
 
 const PAGE_TITLES = {
@@ -18,6 +20,7 @@ const PAGE_TITLES = {
 
 function Header({ onMenuToggle }) {
   const location = useLocation();
+  const { user } = useAuth();
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
   });
@@ -96,7 +99,9 @@ function Header({ onMenuToggle }) {
         </button>
 
         <div className="header__divider" />
-        <div className="header__avatar">WE</div>
+        <div className="header__avatar">
+          <Avatar src={user?.avatar} name={user?.full_name} size="sm" />
+        </div>
       </div>
     </header>
   );
