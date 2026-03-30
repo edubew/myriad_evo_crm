@@ -169,17 +169,17 @@
     margin-left: auto;
   }
 
-  &__card-assignee {
-    width: 22px;
-    height: 22px;
-    border-radius: $radius-full;
-    background: var(--brand-light);
-    color: var(--brand);
-    font-size: 9px;
-    font-weight: $font-weight-bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
+  // &__card-assignee {
+  //   width: 22px;
+  //   height: 22px;
+  //   border-radius: $radius-full;
+  //   background: var(--brand-light);
+  //   color: var(--brand);
+  //   font-size: 9px;
+  //   font-weight: $font-weight-bold;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   flex-shrink: 0;
+  // }
 }

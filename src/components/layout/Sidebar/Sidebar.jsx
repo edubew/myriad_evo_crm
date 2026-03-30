@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
+import Avatar from "../../../components/ui/Avatar/Avatar";
 import "./Sidebar.scss";
 
 const navigation = [
@@ -38,15 +40,9 @@ const navigation = [
   },
 ];
 
-const DEV_USER = { first_name: "Inayat", last_name: "Khan", role: "Admin" };
-
 function Sidebar({ isOpen, onClose }) {
   const { user } = useAuth();
   const location = useLocation();
-  const activeUser = user || DEV_USER;
-
-  const initials = `${activeUser.first_name?.[0] || ""}${activeUser.last_name?.[0] || ""}`;
-  const fullName = `${activeUser.first_name} ${activeUser.last_name}`;
 
   const [isTablet, setIsTablet] = useState(
     window.innerWidth <= 1024 && window.innerWidth > 640,
@@ -65,9 +61,15 @@ function Sidebar({ isOpen, onClose }) {
     if (window.innerWidth <= 640) {
       onClose();
     }
-  }, [location.pathname]);
+  }, [location.pathname, onClose]);
 
   const isCollapsed = isTablet && !hovered;
+
+  const initials = user
+    ? `${user.first_name?.[0] || ""}${user.last_name?.[0] || ""}`
+    : "";
+  const fullName = user ? `${user.first_name} ${user.last_name}` : "";
+  const role = user?.role || "";
 
   return (
     <>
@@ -133,12 +135,10 @@ function Sidebar({ isOpen, onClose }) {
         </nav>
 
         <div className="sidebar__footer">
-          <div className="sidebar__avatar" title={isCollapsed ? fullName : ""}>
-            {initials}
-          </div>
+          <Avatar src={user?.avatar} name={fullName} size="sm" />
           <div className="sidebar__user-info">
             <span className="sidebar__user-name">{fullName}</span>
-            <span className="sidebar__user-role">{activeUser.role}</span>
+            <span className="sidebar__user-role">{user.role}</span>
           </div>
         </div>
       </aside>

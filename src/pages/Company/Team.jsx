@@ -4,6 +4,7 @@ import Button from '../../components/ui/Button/Button'
 import Modal from '../../components/ui/Modal/Modal'
 import Input from '../../components/ui/Input/Input'
 import EmptyState from '../../components/ui/EmptyState/EmptyState'
+import Avatar from "../../components/ui/Avatar/Avatar";
 import './Team.scss'
 
 const DEPARTMENTS = [
@@ -14,7 +15,7 @@ const DEPARTMENTS = [
 const defaultForm = {
   first_name: '', last_name: '',
   email: '', phone: '',
-  role: '', department: '', bio: ''
+  role: '', department: '', bio: '', avatar_url: ''
 }
 
 function Team() {
@@ -48,14 +49,15 @@ function Team() {
   const openEdit = (member) => {
     setEditing(member)
     setForm({
-      first_name: member.first_name || '',
-      last_name:  member.last_name  || '',
-      email:      member.email      || '',
-      phone:      member.phone      || '',
-      role:       member.role       || '',
-      department: member.department || '',
-      bio:        member.bio        || ''
-    })
+      first_name: member.first_name || "",
+      last_name: member.last_name || "",
+      email: member.email || "",
+      phone: member.phone || "",
+      role: member.role || "",
+      department: member.department || "",
+      bio: member.bio || "",
+      avatar_url: member.avatar_url || "",
+    });
     setErrors([])
     setModalOpen(true)
   }
@@ -101,12 +103,11 @@ function Team() {
 
   return (
     <div className="team-page">
-
       <div className="team-page__header">
         <div>
           <h1 className="team-page__title">Team</h1>
           <p className="team-page__subtitle">
-            {members.length} member{members.length !== 1 ? 's' : ''}
+            {members.length} member{members.length !== 1 ? "s" : ""}
           </p>
         </div>
         <Button variant="primary" onClick={openCreate}>
@@ -129,18 +130,18 @@ function Team() {
         />
       ) : (
         <div className="team-grid">
-          {members.map(member => (
+          {members.map((member) => (
             <div
               key={member.id}
               className="member-card"
               onClick={() => openEdit(member)}
             >
-              <div className="member-card__avatar" style={{
-                background: `${DEPT_COLORS[member.department] || '#8B2A2A'}20`,
-                color: DEPT_COLORS[member.department] || '#8B2A2A'
-              }}>
-                {member.initials}
-              </div>
+              <Avatar
+                src={member.avatar}
+                name={member.full_name}
+                size="lg"
+                color={DEPT_COLORS[member.department] || "#8B2A2A"}
+              />
               <div className="member-card__info">
                 <h3 className="member-card__name">{member.full_name}</h3>
                 {member.role && (
@@ -150,8 +151,8 @@ function Team() {
                   <span
                     className="member-card__dept"
                     style={{
-                      color: DEPT_COLORS[member.department] || '#8B2A2A',
-                      background: `${DEPT_COLORS[member.department] || '#8B2A2A'}15`
+                      color: DEPT_COLORS[member.department] || "#8B2A2A",
+                      background: `${DEPT_COLORS[member.department] || "#8B2A2A"}15`,
                     }}
                   >
                     {member.department}
@@ -163,7 +164,7 @@ function Team() {
                   <a
                     href={`mailto:${member.email}`}
                     className="member-card__contact-link"
-                    onClick={e => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {member.email}
                   </a>
@@ -172,7 +173,7 @@ function Team() {
                   <a
                     href={`tel:${member.phone}`}
                     className="member-card__contact-link"
-                    onClick={e => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {member.phone}
                   </a>
@@ -186,13 +187,15 @@ function Team() {
       <Modal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        title={editing ? 'Edit Team Member' : 'Add Team Member'}
+        title={editing ? "Edit Team Member" : "Add Team Member"}
         size="lg"
       >
         <div className="team-form">
           {errors.length > 0 && (
             <div className="team-form__errors">
-              {errors.map((e, i) => <div key={i}>{e}</div>)}
+              {errors.map((e, i) => (
+                <div key={i}>{e}</div>
+              ))}
             </div>
           )}
 
@@ -248,8 +251,10 @@ function Team() {
                 onChange={handleChange}
               >
                 <option value="">Select department</option>
-                {DEPARTMENTS.map(d => (
-                  <option key={d} value={d}>{d}</option>
+                {DEPARTMENTS.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
                 ))}
               </select>
             </div>
@@ -266,6 +271,13 @@ function Team() {
               rows={3}
             />
           </div>
+          <Input
+            label="Photo URL (optional)"
+            name="avatar_url"
+            placeholder="https://..."
+            value={form.avatar_url}
+            onChange={handleChange}
+          />
 
           <div className="team-form__actions">
             {editing && (
@@ -274,25 +286,18 @@ function Team() {
               </Button>
             )}
             <div className="team-form__actions-right">
-              <Button
-                variant="ghost"
-                onClick={() => setModalOpen(false)}
-              >
+              <Button variant="ghost" onClick={() => setModalOpen(false)}>
                 Cancel
               </Button>
-              <Button
-                variant="primary"
-                onClick={handleSave}
-                loading={saving}
-              >
-                {editing ? 'Save changes' : 'Add member'}
+              <Button variant="primary" onClick={handleSave} loading={saving}>
+                {editing ? "Save changes" : "Add member"}
               </Button>
             </div>
           </div>
         </div>
       </Modal>
     </div>
-  )
+  );
 }
 
 export default Team

@@ -22,8 +22,12 @@ function Login() {
     setError("");
     setLoading(true);
     try {
-      await login(form);
-      navigate("/dashboard");
+      const loggedInUser = await login(form);
+      console.log("Logged in user:", loggedInUser);
+      // if (loggedInUser) {
+      //   navigate("/dashboard", { replace: true });
+      // }
+      navigate("/dashboard")
     } catch (err) {
       setError(err.response?.data?.error || "Invalid email or password");
     } finally {

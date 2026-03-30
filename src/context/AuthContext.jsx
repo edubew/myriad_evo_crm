@@ -1,6 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
- 
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { authService } from "../services/authService";
 
 const AuthContext = createContext(null);
@@ -9,7 +14,6 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // on app loading, check if the user is already logged in
   useEffect(() => {
     try {
       const storedUser = localStorage.getItem("user");
@@ -25,25 +29,33 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = async (credentials) => {
-    const data = await authService.login(credentials);
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      setUser(data.user);
-    }
-    return data;
-  };
+  const login = useCallback(async (credentials) => {
+    const { user, token } = await authService.login(credentials);
+    
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
 
-  const register = async (userData) => {
+    setUser(user);
+
+    return user;
+  }, []);
+
+  const register = useCallback(async (userData) => {
     const data = await authService.register(userData);
-    return data;
-  };
+    return data.user;
+  }, []);
 
-  const logout = async () => {
-    await authService.logout();
-    setUser(null);
-  };
+  const logout = useCallback(async () => {
+    try {
+      await authService.logout();
+    } catch {
+      // Even if the server call fails, clear local state
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setUser(null);
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, loading, login, register, logout }}>

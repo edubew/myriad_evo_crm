@@ -1,12 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const DEV_BYPASS = import.meta.env.DEV;
-
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
-
-  if (DEV_BYPASS) return children;
 
   if (loading) {
     return (
@@ -14,14 +10,26 @@ function ProtectedRoute({ children }) {
         style={{
           height: "100vh",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0F0F13",
-          color: "#6C63FF",
+          background: "#120915",
+          color: "#8B2A2A",
+          gap: "16px",
           fontSize: "14px",
         }}
       >
-        Loading...
+        <div
+          style={{
+            width: "28px",
+            height: "28px",
+            border: "2px solid #2A1030",
+            borderTopColor: "#8B2A2A",
+            borderRadius: "50%",
+            animation: "spin 0.8s linear infinite",
+          }}
+        />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }

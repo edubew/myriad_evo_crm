@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { projectService } from "../../services/projectService";
 import TaskModal from "./TaskModal";
 import Badge from "../../components/ui/Badge/Badge";
+import Avatar from "../../components/ui/Avatar/Avatar";
 import "./KanbanBoard.scss";
 
 const COLUMNS = [
@@ -192,12 +193,16 @@ function KanbanBoard({
                                     </span>
                                   )}
                                   {task.assignee && (
-                                    <span className="kanban__card-assignee">
-                                      {task.assignee.full_name
-                                        .split(" ")
-                                        .map((n) => n[0])
-                                        .join("")}
-                                    </span>
+                                    <div
+                                      className="kanban__card-assignee"
+                                      title={task.assignee.full_name}
+                                    >
+                                      <Avatar
+                                        src={task.assignee.avatar}
+                                        name={task.assignee.full_name}
+                                        size="xs"
+                                      />
+                                    </div>
                                   )}
                                 </div>
                               </div>

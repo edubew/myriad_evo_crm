@@ -22,6 +22,8 @@ import Goals from "../pages/Company/Goals";
 import Documents from "../pages/Company/Documents";
 import Pipeline from "../pages/Sales/Pipeline";
 import Leads from "../pages/Sales/Leads"
+import Revenue from "../pages/Finance/Revenue";
+import Invoices from "../pages/Finance/Invoices";
 
 function AppRouter() {
   return (
@@ -39,10 +41,6 @@ function AppRouter() {
               <ProtectedRoute>
                 <AppLayout>
                   <Routes>
-                    <Route
-                      index
-                      element={<Navigate to="/dashboard" replace />}
-                    />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="calendar" element={<Calendar />} />
                     <Route path="clients" element={<Clients />} />
@@ -54,6 +52,8 @@ function AppRouter() {
                     <Route path="documents" element={<Documents />} />
                     <Route path="sales/pipeline" element={<Pipeline />} />
                     <Route path="sales/leads" element={<Leads />} />
+                    <Route path="finance/revenue" element={<Revenue />} />
+                    <Route path="finance/invoices" element={<Invoices />} />
                   </Routes>
                 </AppLayout>
               </ProtectedRoute>
