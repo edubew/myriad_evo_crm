@@ -254,6 +254,7 @@ function Documents() {
           />
 
           <select
+            className="doc-form__select"
             name="category"
             value={form.category}
             onChange={handleChange}

@@ -1,26 +1,26 @@
-// .empty-state {
-//   display: flex;
-//   text-align: center;
+@use '../../../styles/' as *;
 
-//   &__icon {
-//     font-size: 40px;
-//     opacity: 0.4;
-//   }
+.empty-state {
+   &__icon {
+    font-size: 40px;
+    opacity: 0.4;
+  }
 
-//   &__title {
-//     font-size: $font-size-md;
-//     font-weight: $font-weight-semibold;
-//     color: $color-text-primary;
-//   }
+    &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
 
-//   &__description {
-//     font-size: $font-size-sm;
-//     color: $color-text-muted;
-//     max-width: 320px;
-//     line-height: $line-height-loose;
-//   }
+    &__description {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    max-width: 320px;
+    line-height: $line-height-loose;
+  }
 
-//   &__action {
-//     margin-top: $space-2;
-//   } 
-// }
+  &__action {
+    margin-top: $space-2;
+  }  
+}
+
