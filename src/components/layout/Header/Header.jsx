@@ -20,7 +20,7 @@ const PAGE_TITLES = {
 
 function Header({ onMenuToggle }) {
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
   });
@@ -66,6 +66,11 @@ function Header({ onMenuToggle }) {
     return "Myriad Evo";
   };
 
+  // const handleLogout = async () => {
+  //   await authService.logout();
+  //   setUser(null);
+  // };
+
   return (
     <header className="header">
       <div className="header__left">
@@ -102,6 +107,10 @@ function Header({ onMenuToggle }) {
         <div className="header__avatar">
           <Avatar src={user?.avatar} name={user?.full_name} size="sm" />
         </div>
+
+        <button className="header__logout-btn" onClick={logout}>
+          Logout
+        </button>
       </div>
     </header>
   );
