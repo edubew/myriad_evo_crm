@@ -24,6 +24,7 @@ import Pipeline from "../pages/Sales/Pipeline";
 import Leads from "../pages/Sales/Leads"
 import Revenue from "../pages/Finance/Revenue";
 import Invoices from "../pages/Finance/Invoices";
+import AppUsers from "../pages/Company/AppUsers";
 
 function AppRouter() {
   return (
@@ -48,6 +49,7 @@ function AppRouter() {
                     <Route path="projects" element={<Projects />} />
                     <Route path="projects/:id" element={<ProjectDetail />} />
                     <Route path="team" element={<Team />} />
+                    <Route path="app-user" element={<AppUsers />} />
                     <Route path="goals" element={<Goals />} />
                     <Route path="documents" element={<Documents />} />
                     <Route path="sales/pipeline" element={<Pipeline />} />

@@ -14,6 +14,7 @@ const navigation = [
     icon: "⬡",
     path: "/company",
     children: [
+      { label: "App Users", path: "/app-users" },
       { label: "Team", path: "/team" },
       { label: "Goals", path: "/goals" },
       { label: "Documents", path: "/documents" },
