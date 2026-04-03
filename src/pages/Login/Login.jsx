@@ -24,7 +24,7 @@ function Login() {
     try {
       const loggedInUser = await login(form);
       console.log("Logged in user:", loggedInUser);
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.error || "Invalid email or password");
     } finally {
@@ -71,12 +71,12 @@ function Login() {
           </Button>
         </form>
 
-        <p className="auth-card__footer">
+        {/* <p className="auth-card__footer">
           Don't have an account?{" "}
           <Link to="/register" className="auth-card__link">
             Create one
           </Link>
-        </p>
+        </p> */}
       </div>
     </div>
   );
