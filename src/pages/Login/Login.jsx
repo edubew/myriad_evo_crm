@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
 import "./Login.scss";
+import api from "../../services/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -38,11 +39,11 @@ function Login() {
     setError("")
     setDemoLoading(true)
     try {
-      const user = await login({
-        email: "demo@coredesk.com",
-        password: "demo1234"
-      })
-      if (user) navigate("/dashboard", { replace: true })
+      const res = await api.post("/api/v1/demo_login")
+      const { token, user } = res.data
+
+      await login({ token, user })
+      navigate("/dashboard", { replace: true })
     } catch {
       setError("Demo account unavailable. Please try again.")
     } finally {
