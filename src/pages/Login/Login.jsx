@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
@@ -8,10 +8,13 @@ import "./Login.scss";
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const [params] = useSearchParams()
+  const justRegistered = params.get("registered") === "true"
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,15 +25,30 @@ function Login() {
     setError("");
     setLoading(true);
     try {
-      const loggedInUser = await login(form);
-      console.log("Logged in user:", loggedInUser);
-      navigate("/dashboard");
+      const user = await login(form);
+      if (user) navigate("/dashboard", { replace: true })
     } catch (err) {
       setError(err.response?.data?.error || "Invalid email or password");
     } finally {
       setLoading(false);
     }
   };
+
+  const handleDemo = async () => {
+    setError("")
+    setDemoLoading(true)
+    try {
+      const user = await login({
+        email: "demo@coredesk.com",
+        password: "demo1234"
+      })
+      if (user) navigate("/dashboard", { replace: true })
+    } catch {
+      setError("Demo account unavailable. Please try again.")
+    } finally {
+      setDemoLoading(false)
+    }
+  }
 
   return (
     <div className="auth-page">
@@ -39,9 +57,15 @@ function Login() {
           <div className="auth-card__logo">M</div>
           <h1 className="auth-card__title">Welcome back</h1>
           <p className="auth-card__subtitle">
-            Sign in to your Myriad Evo workspace
+            Sign in to your Core Desk workspace
           </p>
         </div>
+
+        {justRegistered && (
+          <div className="auth-card__success">
+            Account created. Sign in to get started.
+          </div>
+        )}
 
         <form className="auth-card__form" onSubmit={handleSubmit}>
           {error && <div className="auth-card__error">{error}</div>}
@@ -71,12 +95,28 @@ function Login() {
           </Button>
         </form>
 
-        {/* <p className="auth-card__footer">
-          Don't have an account?{" "}
+        <div className="auth-card__divider">
+          <span>or</span>
+        </div>
+
+        <button
+          className="auth-card__demo-btn"
+          onClick={handleDemo}
+          disabled={demoLoading}
+        >
+          {demoLoading ? "Loading demo..." : "Try the live demo"}
+        </button>
+
+        <p className="auth-card__demo-note">
+          Explore all features with sample data. No sign up needed.
+        </p>
+
+        <p className="auth-card__footer">
+          New company?{" "}
           <Link to="/register" className="auth-card__link">
-            Create one
+            Create a workspace
           </Link>
-        </p> */}
+        </p>
       </div>
     </div>
   );

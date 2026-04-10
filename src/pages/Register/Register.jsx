@@ -10,6 +10,7 @@ function Register() {
   const { register } = useAuth();
 
   const [form, setForm] = useState({
+    company_name: "",
     first_name: "",
     last_name: "",
     email: "",
@@ -29,7 +30,7 @@ function Register() {
     setLoading(true);
     try {
       await register(form);
-      navigate("/login");
+      navigate("/login?registered=true");
     } catch (err) {
       console.log("Full error:", err);
       console.log("Response data:", err.response?.data);
@@ -45,8 +46,10 @@ function Register() {
       <div className="auth-card">
         <div className="auth-card__header">
           <div className="auth-card__logo">M</div>
-          <h1 className="auth-card__title">Create your account</h1>
-          <p className="auth-card__subtitle">Start building with Myriad Evo</p>
+          <h1 className="auth-card__title">Create your workspace</h1>
+          <p className="auth-card__subtitle">
+            Set up CoreDesk for your Company
+          </p>
         </div>
 
         <form className="auth-card__form" onSubmit={handleSubmit}>
@@ -57,6 +60,14 @@ function Register() {
               ))}
             </div>
           )}
+
+          <Input
+            label="Company name"
+            name="company_name"
+            placeholder="Myriad Evo"
+            value={form.company_name}
+            onChange={handleChange}
+          />
 
           <div className="auth-card__row">
             <Input
@@ -104,7 +115,7 @@ function Register() {
           />
 
           <Button type="submit" fullWidth loading={loading}>
-            Create account
+            Create Workspace
           </Button>
         </form>
 

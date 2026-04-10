@@ -96,4 +96,62 @@
       color: var(--brand-hover);
     }
   }
+
+  &__success {
+    padding: $space-3 $space-4;
+    background: rgba(74, 140, 106, 0.1);
+    border: 1px solid rgba(74, 140, 106, 0.3);
+    border-radius: $radius-md;
+    color: #4a8c6a;
+    font-size: $font-size-sm;
+    text-align: center;
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    color: var(--text-muted);
+    font-size: $font-size-xs;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+  }
+
+  &__demo-btn {
+    width: 100%;
+    padding: $space-3;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--surface-raised);
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    font-family: $font-family;
+    transition: all $transition-fast;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__demo-note {
+    text-align: center;
+    font-size: $font-size-xs;
+    color: var(--text-muted);
+    margin-top: -$space-2;
+  }
 }
