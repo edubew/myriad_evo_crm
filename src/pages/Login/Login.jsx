@@ -39,7 +39,7 @@ function Login() {
     setError("")
     setDemoLoading(true)
     try {
-      const res = await api.post("/api/v1/demo_login")
+      const res = await api.post("/demo_login")
       const { token, user } = res.data
 
       await login({ token, user })
